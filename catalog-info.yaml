@@ -1,0 +1,36 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ffc-debugger
+  description: Container service used for debugging by ADP support team
+  annotations:
+    github.com/project-slug: DEFRA/ffc-debugger
+    dev.azure.com/project: DEFRA-ADP
+    dev.azure.com/build-definition: ffc-debugger
+    sonarqube.org/project-key: ffc-debugger
+    grafana/dashboard-selector: "folderTitle == 'Managed Prometheus'"
+    backstage.io/kubernetes-id: ffc-debugger
+  links:
+    - url: https://github.com/DEFRA/ffc-debugger
+      title: GitHub Repository
+      icon: github
+    - url: https://dev.azure.com/defragovuk/DEFRA-ADP
+      title: Azure DevOps Project
+      icon: project
+    - url: https://sonarcloud.io/project/overview?id=ffc-debugger
+      title: SonarCloud Analysis
+      icon: check
+    - url: https://snyk.io/test/github/DEFRA/ffc-debugger
+      title: Snyk Analysis
+      icon: policy
+    - url: https://portal.azure.com/defradev.onmicrosoft.com
+      title: Azure Portal - Defra Dev
+      icon: cloud
+    - url: https://portal.azure.com/Defra.onmicrosoft.com
+      title: Azure Portal - Defra
+      icon: cloud
+spec:
+  type: backend
+  lifecycle: alpha
+  owner: group:default/ccts-adp
+  system: system:default/adp-shared-services

@@ -1,0 +1,20 @@
+services:
+  ? ffc-debugger
+  : build:
+      context: .
+      target: production
+    image: ffc-debugger
+    container_name: ffc-debugger
+    depends_on:
+      - ffc-debugger-postgres
+    environment:
+      APPINSIGHTS_CLOUDROLE: ffc-debugger-local
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+
+
+  ? ffc-debugger-postgres
+  : image: postgres:15.6-alpine
+    environment:
+      POSTGRES_DB: ffc-debugger
+      POSTGRES_PASSWORD: ppp
+      POSTGRES_USERNAME: postgres

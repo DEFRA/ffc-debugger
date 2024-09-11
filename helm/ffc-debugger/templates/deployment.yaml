@@ -1,0 +1,8 @@
+{{- include "adp-helm-library.deployment" (list . "ffc-debugger.deployment") -}}
+{{- define "ffc-debugger.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "adp-helm-library.container" (list . "ffc-debugger.container") }}
+{{- end -}}
