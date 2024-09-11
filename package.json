@@ -1,6 +1,6 @@
 {
   "name": "ffc-debugger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Container service used for debugging by ADP support team",
   "homepage": "github.com?owner=defra&repo=ffc-debugger&organization=defra",
   "main": "app/index.js",
@@ -20,7 +20,8 @@
   "license": "OGL-UK-3.0",
   "dependencies": {
     "@hapi/hapi": "21.3.2",
-    "applicationinsights": "2.8.0"
+    "applicationinsights": "2.8.0",
+    "postgrejs": "2.19.0"
   },
   "devDependencies": {
     "jest": "29.7.0",
