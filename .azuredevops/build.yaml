@@ -50,8 +50,6 @@ extends:
       projectPath: "./package.json"
       manifestPath: "./package.json"
       imageRepoName: ffc-debugger
-    appTestConfig:
-      testFilePath: "./docker-compose.test.yaml"
     appDeployConfig:
       filepath: "./appConfig"
       filetype: "yaml"
