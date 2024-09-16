@@ -33,6 +33,10 @@ through the Docker Compose
 docker-compose build
 ```
 
+#### Internal CA certificates
+
+The image includes the certificate for the internal CA so that traffic can traverse the network without encountering issues. In this specific example, it is needed so that we can run `apt-get update` to get latest packages before installing them.
+
 ### Start
 
 Use Docker Compose to run service locally.
