@@ -1,32 +1,25 @@
-ARG PARENT_VERSION=2.2.2-node20.11.1
-ARG PORT=3000
-ARG PORT_DEBUG=9229
-
 # Development
-FROM defradigital/node-development:${PARENT_VERSION} AS development
-ARG PARENT_VERSION
-LABEL uk.gov.defra.adp.parent-image=defradigital/node-development:${PARENT_VERSION}
+FROM ubuntu:14.04 AS development
+LABEL uk.gov.defra.adp.parent-image=defradigital/ubuntu-debug:14.04
 
-ARG PORT
-ARG PORT_DEBUG
-ENV PORT ${PORT}
-EXPOSE ${PORT} ${PORT_DEBUG}
+ADD https://raw.githubusercontent.com/DEFRA/defra-docker-node/refs/heads/master/certificates/internal-ca.crt /usr/local/share/ca-certificates/internal-ca.crt
+RUN chmod 644 /usr/local/share/ca-certificates/internal-ca.crt && update-ca-certificates
 
-COPY --chown=node:node package*.json ./
-RUN npm install
-COPY --chown=node:node . .
-CMD [ "npm", "run", "start:watch" ]
+RUN apt-get update
+RUN apt-get -y install postgresql-client curl jq nodejs npm
+
+# Keep container running in k8s cluster for debugging
+CMD ["tail", "-f", "/dev/null"]
 
 # Production
-FROM defradigital/node:${PARENT_VERSION} AS production
-ARG PARENT_VERSION
-LABEL uk.gov.defra.adp.parent-image=defradigital/node:${PARENT_VERSION}
+FROM ubuntu:14.04 AS production
+LABEL uk.gov.defra.adp.parent-image=defradigital/ubuntu-debug:14.04
 
-ARG PORT
-ENV PORT ${PORT}
-EXPOSE ${PORT}
+ADD https://raw.githubusercontent.com/DEFRA/defra-docker-node/refs/heads/master/certificates/internal-ca.crt /usr/local/share/ca-certificates/internal-ca.crt
+RUN chmod 644 /usr/local/share/ca-certificates/internal-ca.crt && update-ca-certificates
 
-COPY --from=development /home/node/app/ ./app/
-COPY --from=development /home/node/package*.json ./
-RUN npm ci
-CMD [ "node", "app" ]
+RUN apt-get update
+RUN apt-get -y install postgresql-client curl jq nodejs npm
+
+# Keep container running in k8s cluster for debugging
+CMD ["tail", "-f", "/dev/null"]
