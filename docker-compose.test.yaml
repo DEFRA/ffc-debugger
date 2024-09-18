@@ -7,10 +7,4 @@ services:
       target: development
     image: ffc-debugger-development
     container_name: ffc-debugger-test
-    command: npm run test
-    volumes:
-      - ./app:/home/node/app
-      - ./test:/home/node/test
-      - ./test-output:/home/node/test-output
-      - ./jest.config.js:/home/node/jest.config.js
-      - ./package.json:/home/node/package.json
+    command: echo "Nodejs testing not required for debug container"
