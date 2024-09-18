@@ -35,7 +35,7 @@ docker-compose build
 
 #### Internal CA certificates
 
-The image includes the certificate for the internal CA so that traffic can traverse the network without encountering issues. In this specific example, it is needed so that we can run `apt-get update` to get latest packages before installing them.
+The image includes the certificate for the internal CA so that traffic can traverse the network without encountering issues. In this specific example, it is needed so that we can run `apt-get update` to get latest packages before installing them. The certificate is pulled directly from the [defra-docker-node](https://github.com/DEFRA/defra-docker-node) repository at build time.
 
 ### Start
 
