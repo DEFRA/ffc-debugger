@@ -1,6 +1,6 @@
 {
   "name": "ffc-debugger",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Container service used for debugging by ADP support team",
   "homepage": "github.com?owner=defra&repo=ffc-debugger&organization=defra",
   "main": "app/index.js",
