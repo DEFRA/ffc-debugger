@@ -10,7 +10,7 @@ parameters:
 
 pr:
   branches:
-    include:
+    exclude:
       - main
   paths:
     exclude:
@@ -22,8 +22,8 @@ pr:
 trigger:
   batch: true
   branches:
-    include:
-      - "*"
+    exclude:
+      - main
   paths:
     exclude:
       - test-output/*
@@ -32,11 +32,11 @@ trigger:
 
 resources:
   repositories:
-    - repository: DEFRA-ADPPipelineCommon
-      name: DEFRA/adp-pipeline-common
-      endpoint: DEFRA-ADP
+    - repository: templates
+      endpoint: DEFRA
       type: github
-      ref: refs/tags/1.0.0-latest
+      name: defra/fcp-pipeline-common
+      ref: pl-798-add-db-permissions
 
 extends:
   template: /pipelines/common-app-build.yaml@DEFRA-ADPPipelineCommon
