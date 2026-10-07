@@ -21,7 +21,6 @@ resources:
       endpoint: DEFRA
       type: github
       name: defra/fcp-pipeline-common
-      ref: pl-798-add-db-permissions
 
 extends:
   template: fcp-common-pipeline.yaml@templates
@@ -38,9 +37,4 @@ extends:
     snd2_params:
       livenessProbe.timeoutSeconds: $(snd2_livenessProbe_timeoutSeconds)
       readinessProbe.failureThreshold: $(snd2_readinessProbe_failureThreshold)
-    dev_params:
-      livenessProbe.timeoutSeconds: $(dev_livenessProbe_timeoutSeconds)      
-    # failOnThreshold: high
-    enableServiceNowChangeCreationDev: true
-    enableServiceNowChangeCreation: true
 
