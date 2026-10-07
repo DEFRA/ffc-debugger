@@ -5,7 +5,7 @@ trigger:
   - release/*
 
 pr:
-  - releases/*
+  - feature/*
 
 parameters:
   - name: prDeployment
