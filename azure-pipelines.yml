@@ -14,6 +14,9 @@ parameters:
   - name: branchDeployment
     type: boolean
     default: true
+  - name: sndDeployment
+    type: boolean
+    default: true
 
 resources:
   repositories:
@@ -28,9 +31,7 @@ extends:
     appFrameworkType: nodejs
     prDeployment: ${{ parameters.prDeployment }}
     branchDeployment: ${{ parameters.branchDeployment }}
-    sndDeployment: ${{ parameters.snd2Deployment }}
-    snd1Deployment: ${{ parameters.snd1Deployment }}
-    variableGroupName: ffc-demo-apply-env-var
+    sndDeployment: ${{ parameters.sndDeployment }}
     pr_params:
       livenessProbe.timeoutSeconds: $(snd2_livenessProbe_timeoutSeconds)
       readinessProbe.failureThreshold: $(snd2_readinessProbe_failureThreshold)    
